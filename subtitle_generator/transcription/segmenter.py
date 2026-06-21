@@ -17,6 +17,17 @@ class TextSegmenter:
         min_duration: float = 0.5,
         max_duration: float = 8.0
     ):
+        if max_chinese_chars <= 0:
+            raise ValueError(f"max_chinese_chars 必须为正整数，当前值: {max_chinese_chars}")
+        if max_english_chars <= 0:
+            raise ValueError(f"max_english_chars 必须为正整数，当前值: {max_english_chars}")
+        if min_duration <= 0:
+            raise ValueError(f"min_duration 必须大于 0，当前值: {min_duration}")
+        if max_duration <= 0:
+            raise ValueError(f"max_duration 必须大于 0，当前值: {max_duration}")
+        if min_duration >= max_duration:
+            raise ValueError(f"min_duration ({min_duration}) 必须小于 max_duration ({max_duration})")
+
         self.max_chinese_chars = max_chinese_chars
         self.max_english_chars = max_english_chars
         self.min_duration = min_duration
