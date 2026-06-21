@@ -1,0 +1,32 @@
+input_directory: "./videos"
+output_directory: "./subtitles"
+
+model:
+  size: "base"
+  device: "auto"
+  compute_type: "auto"
+
+preprocessing:
+  denoise: true
+  denoise_level: 0.5
+  normalize: true
+  target_lufs: -16.0
+
+transcription:
+  language: null
+  beam_size: 5
+  vad_filter: true
+  temperature: 0.0
+
+formatting:
+  output_formats:
+    - "srt"
+    - "vtt"
+    - "txt"
+  txt_with_timestamp: true
+  max_chinese_chars: 50
+  max_english_chars: 80
+
+watcher:
+  enabled: false
+  scan_existing: true
